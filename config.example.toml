@@ -1,63 +1,63 @@
-# Copiez ce fichier en `config.toml` et remplissez-le.
+# Copy this file to `config.toml` and fill it in.
 #
-# `config.toml` est dans le .gitignore : c'est le seul endroit ou un
-# token a le droit de vivre. Si vous preferez ne pas l'ecrire du tout,
-# laissez `token` vide et exportez la variable d'environnement
-# ECO_AUTH_TOKEN, ou laissez l'app vous le demander en saisie masquee.
+# `config.toml` is in the .gitignore: it is the only place a token is
+# allowed to live. If you would rather not write it down at all, leave
+# `token` empty and export the ECO_AUTH_TOKEN environment variable, or
+# let the app ask you for it with hidden input.
 #
-# Priorite des reglages : argument CLI > variable d'env > ce fichier.
+# Settings priority: CLI argument > env variable > this file.
 
 [server]
-# URL du serveur Eco, port du serveur web compris.
+# URL of the Eco server, web server port included.
 url = "http://eco.sg1-server.com:3001"
 
-# X-Auth-Token ("world ticket"). Il expire au bout de 24 h.
-# Ou le trouver : dans le jeu, ouvrez le plugin GoodPrice, puis dans
-# les outils de dev du navigateur -> Application -> Local Storage ->
-# cle `worldTicketData`, champ `worldTicket`.
+# X-Auth-Token ("world ticket"). It expires after 24 h.
+# Where to find it: in game, open the GoodPrice plugin, then in the
+# browser dev tools -> Application -> Local Storage -> key
+# `worldTicketData`, field `worldTicket`.
 token = ""
 
 
 [trading]
-# Devise analysee. Laissez commente pour prendre automatiquement la
-# devise la plus repandue du serveur (souvent "Calories").
+# Currency analysed. Leave it commented out to automatically pick the
+# most widespread currency on the server (often "Calories").
 # currency = "Calories"
 
-# Tresorerie de depart. 0 = illimite : on affiche tout ce qui est
-# rentable sans se soucier de la bourse. Mettez votre solde reel pour
-# obtenir une chaine reellement executable.
+# Starting cash. 0 = unlimited: everything profitable is shown, with no
+# regard for your purse. Set your real balance to get a chain you can
+# actually run.
 capital = 0
 
-# Ignore les routes qui rapportent moins que ca, pour degager le bruit
-# des micro-marges a deux centimes.
+# Ignores routes earning less than this, to clear out the noise of
+# two-cent micro-margins.
 min_profit = 0.5
 
-# Nombre de lignes affichees par `Routes.py` (0 = tout).
+# Number of lines printed by `Routes.py` (0 = all of them).
 top = 25
 
 
 [activity]
-# Jours sans avoir vu le joueur en ligne avant d'afficher une alerte.
+# Days without seeing the player online before showing a warning.
 absent_days = 7
 
-# Jours sans le moindre changement dans ses boutiques (prix, stock,
-# solde) avant d'afficher une alerte. Complementaire du precedent :
-# ce signal fonctionne meme si l'endpoint /players est absent.
+# Days without the slightest change in their stores (price, stock,
+# balance) before showing a warning. Complementary to the previous one:
+# this signal works even if the /players endpoint is missing.
 stale_days = 14
 
 
 [blacklist]
-# Correspondance PARTIELLE et insensible a la casse : "dump" suffit
-# pour ecarter "<color=grey>Twitch's Dumping Grounds</color>".
+# Matching is PARTIAL and case-insensitive: "dump" is enough to rule
+# out "<color=grey>Twitch's Dumping Grounds</color>".
 #
-# Vos propres boutiques sont deja exclues automatiquement (acheter a
-# soi-meme ne rapporte rien) : utilisez --include-own pour les revoir.
+# Your own stores are already excluded automatically (buying from
+# yourself earns nothing): use --include-own to bring them back.
 
-# Joueurs avec qui on ne veut pas commercer.
+# Players you do not want to trade with.
 players = []
 
-# Boutiques precises a ignorer (decharges, boutiques de test, etc.).
+# Specific stores to ignore (dumps, test stores, etc.).
 stores = []
 
-# Items a ne jamais trader (encombrants, ou qu'on garde pour soi).
+# Items never to trade (bulky ones, or ones you keep for yourself).
 items = []
