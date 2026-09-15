@@ -1,0 +1,19 @@
+# --- Secrets : le token ne doit jamais partir dans Git ---
+config.toml
+.env
+
+# --- Historique de presence / snapshots (local, volumineux) ---
+data/
+
+# --- Exports ---
+*.html
+*.csv
+report_*.json
+
+# --- Environnement ---
+.venv/
+__pycache__/
+*.py[cod]
+
+# --- Contexte de session : versionne ---
+.ai/

@@ -1,0 +1,63 @@
+# Copiez ce fichier en `config.toml` et remplissez-le.
+#
+# `config.toml` est dans le .gitignore : c'est le seul endroit ou un
+# token a le droit de vivre. Si vous preferez ne pas l'ecrire du tout,
+# laissez `token` vide et exportez la variable d'environnement
+# ECO_AUTH_TOKEN, ou laissez l'app vous le demander en saisie masquee.
+#
+# Priorite des reglages : argument CLI > variable d'env > ce fichier.
+
+[server]
+# URL du serveur Eco, port du serveur web compris.
+url = "http://eco.sg1-server.com:3001"
+
+# X-Auth-Token ("world ticket"). Il expire au bout de 24 h.
+# Ou le trouver : dans le jeu, ouvrez le plugin GoodPrice, puis dans
+# les outils de dev du navigateur -> Application -> Local Storage ->
+# cle `worldTicketData`, champ `worldTicket`.
+token = ""
+
+
+[trading]
+# Devise analysee. Laissez commente pour prendre automatiquement la
+# devise la plus repandue du serveur (souvent "Calories").
+# currency = "Calories"
+
+# Tresorerie de depart. 0 = illimite : on affiche tout ce qui est
+# rentable sans se soucier de la bourse. Mettez votre solde reel pour
+# obtenir une chaine reellement executable.
+capital = 0
+
+# Ignore les routes qui rapportent moins que ca, pour degager le bruit
+# des micro-marges a deux centimes.
+min_profit = 0.5
+
+# Nombre de lignes affichees par `Routes.py` (0 = tout).
+top = 25
+
+
+[activity]
+# Jours sans avoir vu le joueur en ligne avant d'afficher une alerte.
+absent_days = 7
+
+# Jours sans le moindre changement dans ses boutiques (prix, stock,
+# solde) avant d'afficher une alerte. Complementaire du precedent :
+# ce signal fonctionne meme si l'endpoint /players est absent.
+stale_days = 14
+
+
+[blacklist]
+# Correspondance PARTIELLE et insensible a la casse : "dump" suffit
+# pour ecarter "<color=grey>Twitch's Dumping Grounds</color>".
+#
+# Vos propres boutiques sont deja exclues automatiquement (acheter a
+# soi-meme ne rapporte rien) : utilisez --include-own pour les revoir.
+
+# Joueurs avec qui on ne veut pas commercer.
+players = []
+
+# Boutiques precises a ignorer (decharges, boutiques de test, etc.).
+stores = []
+
+# Items a ne jamais trader (encombrants, ou qu'on garde pour soi).
+items = []
